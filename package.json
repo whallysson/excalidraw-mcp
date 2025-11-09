@@ -1,0 +1,25 @@
+{
+  "name": "excalidraw-mcp",
+  "version": "1.0.0",
+  "description": "Excalidraw MCP Server with Real-Time Frontend",
+  "author": "whallysson",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently --names \"BACKEND,FRONTEND\" -c \"cyan,green\" \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
+    "dev:all": "concurrently --names \"MCP,HTTP,FRONTEND\" -c \"magenta,cyan,green\" \"npm run dev:mcp --workspace=backend\" \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
+    "build": "npm run build --workspace=backend && npm run build --workspace=frontend",
+    "start": "concurrently --names \"BACKEND,FRONTEND\" -c \"cyan,green\" \"npm run start --workspace=backend\" \"npm run start --workspace=frontend\"",
+    "test": "npm run test --workspace=backend && npm run test --workspace=frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

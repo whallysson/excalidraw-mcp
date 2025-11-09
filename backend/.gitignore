@@ -1,0 +1,9 @@
+**/node_modules/
+node_modules/
+/node_modules
+
+# Lock files
+*-lock.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

@@ -1,0 +1,132 @@
+# ============================================
+# Node.js / TypeScript
+# ============================================
+node_modules/
+**/node_modules/
+dist/
+build/
+*.tsbuildinfo
+
+# ============================================
+# Logs
+# ============================================
+*.log
+logs/*
+!logs/.gitkeep
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ============================================
+# Package Manager Lock Files
+# ============================================
+# Note: package-lock.json is tracked for CI/CD dependency caching
+yarn.lock
+pnpm-lock.yaml
+
+# ============================================
+# Environment Variables
+# ============================================
+.env
+.env.local
+.env.*.local
+.env.backup
+.env.production
+
+# ============================================
+# Testing & Coverage
+# ============================================
+coverage/
+*.lcov
+.nyc_output
+
+# ============================================
+# Operating System Files
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# ============================================
+# IDEs and Editors
+# ============================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Fleet
+.fleet/
+
+# Nova
+.nova/
+
+# Zed
+.zed/
+
+# Vim
+*.swp
+*.swo
+*~
+
+# ============================================
+# Build Outputs
+# ============================================
+/public/build
+/public/hot
+/public/storage
+
+# ============================================
+# Data & Storage
+# ============================================
+data/*
+!data/.gitkeep
+*.excalidraw
+
+# ============================================
+# Docker
+# ============================================
+docker-compose.override.yml
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+.cache/
+
+# ============================================
+# Project Specific (Local Configuration)
+# ============================================
+.mcp.json
+.cursor/
+.claude/
+auth.json
+
+# ============================================
+# Test & Demo Files (Local Development Only)
+# ============================================
+backend/test-*.ts
+backend/demo-*.html
+backend/test-*.js
+*.test.local.ts
+
+# ============================================
+# Documentation (Generated)
+# ============================================
+specs/**/checklists/
+specs/**/.speckit/
+
+# ============================================
+# Legacy (Compatibility)
+# ============================================
+Homestead.json
+Homestead.yaml

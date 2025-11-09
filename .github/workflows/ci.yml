@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build backend
+        run: npm run build --workspace=backend
+
+      - name: Build frontend
+        run: npm run build --workspace=frontend
+
+      - name: Verify build artifacts
+        run: |
+          echo "✓ Checking backend build artifacts..."
+          test -f backend/dist/index.js || (echo "❌ backend/dist/index.js not found" && exit 1)
+          test -f backend/dist/server.js || (echo "❌ backend/dist/server.js not found" && exit 1)
+          echo "✓ Backend artifacts OK"
+
+          echo "✓ Checking frontend build artifacts..."
+          test -d frontend/dist || (echo "❌ frontend/dist not found" && exit 1)
+          test -f frontend/dist/index.html || (echo "❌ frontend/dist/index.html not found" && exit 1)
+          echo "✓ Frontend artifacts OK"
+
+      - name: Run backend tests
+        run: npm test --workspace=backend -- --run
+
+      - name: Upload build artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts-${{ github.sha }}
+          path: |
+            backend/dist/
+            frontend/dist/
+          retention-days: 7
